@@ -7,10 +7,12 @@ message = """Subject: Test Mail by Python Postman
 Hi,
 {name}, Designation: {designation}.
 Pls Ignore this mail due to mail sent for Python Programming Test """
+
 from_address = "mostafa.siddiqui@gmail.com"
 password =input("Type your password and press enter: ")
 
 context = ssl.create_default_context()
+
 try:
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(from_address, password)
