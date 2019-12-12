@@ -1,0 +1,26 @@
+# auto mail to multiple mail_id
+
+import csv, smtplib, ssl
+
+message = """Subject: Test Mail by Python Postman
+
+Hi,
+{name}, Designation: {designation}.
+Pls Ignore this mail due to mail sent for Python Programming Test """
+from_address = "mostafa.siddiqui@gmail.com"
+password ='siddi@123' # input("Type your password and press enter: ")
+
+context = ssl.create_default_context()
+try:
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+        server.login(from_address, password)
+        with open("contact1.csv") as file:
+            reader = csv.reader(file)
+            next(reader)  # Skip header row
+            for name, designation,email in reader:
+                server.sendmail(from_address, email,
+                    message.format(name=name,designation=designation),)
+    server.close()
+    print('Email sent to multiple mail_id')
+except exception as e:
+    print ('Something Wrong.Error:',e)
