@@ -8,7 +8,7 @@ Hi,
 {name}, Designation: {designation}.
 Pls Ignore this mail due to mail sent for Python Programming Test """
 from_address = "mostafa.siddiqui@gmail.com"
-password ='siddi@123' # input("Type your password and press enter: ")
+password =input("Type your password and press enter: ")
 
 context = ssl.create_default_context()
 try:
